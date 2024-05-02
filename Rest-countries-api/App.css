@@ -75,6 +75,10 @@ a {
   box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.2);
 }
 
+.country-card img {
+  max-height: 170px;
+}
+
 .card-title {
   font-size: 24px;
   margin-block: 16px;
