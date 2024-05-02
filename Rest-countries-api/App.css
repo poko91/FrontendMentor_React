@@ -142,6 +142,28 @@ a {
   color: var(--text-color);
 }
 
+.error-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-page-container h2 {
+  font-size: 108px;
+}
+
+.back-button {
+  background-color: #f0a04b;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-top: 50px;
+  font-size: 24px;
+  display: flex;
+  gap: 15px;
+}
+
 @media (max-width: 768px) {
   .countries-container {
     justify-content: center;
