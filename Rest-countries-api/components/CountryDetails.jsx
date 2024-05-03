@@ -11,9 +11,7 @@ export default function CountryDetails() {
   const fetchData = async () => {
     try {
       const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
-      const data = await response.json();
-      const country = data[0];
-      console.log(country);
+      const [country] = await response.json();
 
       setCountryData({
         name: country.name.common,
@@ -28,8 +26,20 @@ export default function CountryDetails() {
           .map((currency) => currency.name)
           .join(", "),
         languages: Object.values(country.languages).join(", "),
-        borderCountries: country.borders ? Object.values(country.borders).join(", ") : null,
+        borders: [],
       });
+
+      if (!country.borders) {
+        country.borders = [];
+      }
+
+      const promises = country.borders.map(async (border) => {
+        const res = await fetch(`https://restcountries.com/v3.1/alpha/${border}`);
+        const [borderCountry] = await res.json();
+        return borderCountry.name.common;
+      });
+      const borders = await Promise.all(promises);
+      setCountryData((prevState) => ({ ...prevState, borders }));
     } catch (error) {
       setError(true);
     }
@@ -37,7 +47,7 @@ export default function CountryDetails() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [countryName]);
 
   if (error) {
     return <Error />;
@@ -48,15 +58,13 @@ export default function CountryDetails() {
   ) : (
     <main>
       <div className="country-details-container">
-        <Link to="/">
-          <span className="country-back-button">
-            <i className="fa-solid fa-arrow-left"></i>&nbsp; Back
-          </span>
-        </Link>
+        <span className="country-back-button" onClick={() => history.back()}>
+          <i className="fa-solid fa-arrow-left"></i>&nbsp; Back
+        </span>
         <div className="country-details">
           <img src={countryData.flag} alt={countryData.name} />
           <div className="details-text-container">
-            <h1>{countryName}</h1>
+            <h1>{countryData.name}</h1>
             <div className="details-text">
               <p>
                 <b>Native Name: {countryData.nativeName} </b>
@@ -91,11 +99,16 @@ export default function CountryDetails() {
                 <span className="languages"></span>
               </p>
             </div>
-            {countryData.borderCountries ? (
+            {countryData.borders.length !== 0 && (
               <div className="border-countries">
-                <b>Border Countries: {countryData.borderCountries}</b>&nbsp;
+                <b>Border Countries:</b>&nbsp;
+                {countryData.borders.map((country) => (
+                  <Link key={country} to={`/${country}`}>
+                    {country}
+                  </Link>
+                ))}
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </div>
