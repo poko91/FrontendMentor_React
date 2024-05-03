@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./CountryDetails.css";
+import Error from "./Error";
 
 export default function CountryDetails() {
-  const [searchParams] = useSearchParams();
-  const countryName = searchParams.get("name");
+  const countryName = useParams("country").country;
   const [countryData, setCountryData] = useState(null);
+  const [error, setError] = useState(false);
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.toLowerCase()}?fullText=true`);
+      const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
       const data = await response.json();
       const country = data[0];
       console.log(country);
@@ -30,13 +31,17 @@ export default function CountryDetails() {
         borderCountries: country.borders ? Object.values(country.borders).join(", ") : null,
       });
     } catch (error) {
-      console.log(error.message);
+      setError(true);
     }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (error) {
+    return <Error />;
+  }
 
   return countryData === null ? (
     <div>Loading...</div>
@@ -86,9 +91,11 @@ export default function CountryDetails() {
                 <span className="languages"></span>
               </p>
             </div>
-            <div className="border-countries">
-              <b>Border Countries: {countryData.borderCountries}</b>&nbsp;
-            </div>
+            {countryData.borderCountries ? (
+              <div className="border-countries">
+                <b>Border Countries: {countryData.borderCountries}</b>&nbsp;
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

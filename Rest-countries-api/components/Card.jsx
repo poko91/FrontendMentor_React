@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Card({ name, flag, population, region, capital }) {
   return (
-    <Link className="country-card" to={`/country?name=${name}`}>
+    <Link className="country-card" to={`/${name.toLowerCase()}`}>
       <img src={flag} alt="" />
       <div className="card-text">
         <h3 className="card-title">{name}</h3>
