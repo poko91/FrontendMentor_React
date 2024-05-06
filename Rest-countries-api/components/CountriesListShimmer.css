@@ -1,4 +1,20 @@
 .shimmer-card {
-  height: 309px;
+  height: 350px;
   background-color: #f4f4f4;
+}
+
+main.dark .shimmer-card {
+  background-color: #2b3945;
+}
+
+@media (max-width: 940px) {
+  .shimmer-card {
+    height: 315px;
+  }
+}
+
+@media (max-width: 610px) {
+  .shimmer-card {
+    height: 309px;
+  }
 }
