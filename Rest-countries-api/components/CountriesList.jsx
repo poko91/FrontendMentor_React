@@ -5,7 +5,9 @@ import CountriesListShimmer from "./CountriesListShimmer";
 export default function CountriesList({ query }) {
   const [countries, setCountries] = useState([]);
 
-  const filteredCountries = countries.filter((country) => country.name.common.toLowerCase().includes(query));
+  const filteredCountries = countries.filter(
+    (country) => country.name.common.toLowerCase().includes(query) || country.region.toLowerCase().includes(query)
+  );
 
   const fetchData = async () => {
     try {
