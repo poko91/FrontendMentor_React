@@ -1,21 +1,14 @@
 import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
 import "./App.css";
-import Filter from "./components/Filter";
-import CountriesList from "./components/CountriesList";
+import { Outlet } from "react-router-dom";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const App = () => {
   return (
-    <div>
+    <ThemeProvider>
       <Header />
-      <main>
-        <div className="search-filter-container">
-          <SearchBar />
-          <Filter />
-        </div>
-        <CountriesList />
-      </main>
-    </div>
+      <Outlet />
+    </ThemeProvider>
   );
 };
 
