@@ -15,16 +15,16 @@ export default function CountryDetails() {
     setCountryData({
       name: country.name.common,
       flag: country.flags.svg,
-      nativeName: Object.values(country.name.nativeName)[0].common,
+      nativeName: Object.values(country.name.nativeName || {})[0]?.common,
       population: country.population,
       region: country.region,
       subRegion: country.subregion,
-      capital: country.capital.join(", "),
+      capital: country.capital,
       topLevelDomain: country.tld[0],
-      currencies: Object.values(country.currencies)
+      currencies: Object.values(country.currencies || {})
         .map((currency) => currency.name)
         .join(", "),
-      languages: Object.values(country.languages).join(", "),
+      languages: Object.values(country.languages || {}).join(", "),
       borders: [],
     });
 
@@ -79,7 +79,7 @@ export default function CountryDetails() {
             <h1>{countryData.name}</h1>
             <div className="details-text">
               <p>
-                <b>Native Name: {countryData.nativeName} </b>
+                <b>Native Name: {countryData.nativeName || countryData.name} </b>
                 <span className="native-name"></span>
               </p>
               <p>
@@ -95,7 +95,7 @@ export default function CountryDetails() {
                 <span className="sub-region"></span>
               </p>
               <p>
-                <b>Capital: {countryData.capital}</b>
+                <b>Capital: {countryData.capital?.join(", ")}</b>
                 <span className="capital"></span>
               </p>
               <p>
@@ -111,7 +111,7 @@ export default function CountryDetails() {
                 <span className="languages"></span>
               </p>
             </div>
-            {countryData.borders && countryData.borders.length ? (
+            {countryData.borders && countryData.borders.length && (
               <div className="border-countries">
                 <b>Border Countries:</b>&nbsp;
                 {countryData.borders.map((country) => (
@@ -120,7 +120,7 @@ export default function CountryDetails() {
                   </Link>
                 ))}
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </div>

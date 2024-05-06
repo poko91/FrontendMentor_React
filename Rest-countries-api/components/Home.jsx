@@ -2,6 +2,7 @@ import CountriesList from "./CountriesList";
 import SearchBar from "./SearchBar";
 import Filter from "./Filter";
 import { useTheme } from "../hooks/useTheme";
+import { useState } from "react";
 
 export default function Home() {
   const [query, setQuery] = useState("");

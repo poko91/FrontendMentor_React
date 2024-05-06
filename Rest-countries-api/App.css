@@ -31,6 +31,7 @@ main {
 a {
   text-decoration-line: none;
   color: inherit;
+  background-color: var(--elements-color);
 }
 
 .header-container {
