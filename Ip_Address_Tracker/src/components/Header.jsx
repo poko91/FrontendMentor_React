@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import LocationContent from "./LocationContent";
+import useData from "../../hooks/useData";
 
 export default function Header() {
-  const [ipData, setIpData] = useState(null);
+  const [, setData] = useData();
   const [ip, setIp] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_x2c2TfdhTzKZh5pONbIgx1iHWYwnE&ipAddress=${ip}&domain=${ip}`)
+    fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_Oit2UXWkmWdSVuHwJQtTgmKiFtjUy&ipAddress=${ip}&domain=${ip}`)
       .then((response) => response.json())
       .then((data) => {
-        setIpData({
+        setData({
           ipAddress: data.ip,
           timezone: data.location.timezone || "",
           country: data.location.country,
@@ -30,7 +31,7 @@ export default function Header() {
     <header className="wrapper">
       <h1 className="title">IP Address Tracker</h1>
       <SearchBar setIp={setIp} />
-      {loading ? <p>Loading...</p> : <LocationContent ipData={ipData} />}
+      {loading ? <p>Loading...</p> : <LocationContent />}
     </header>
   );
 }

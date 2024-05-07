@@ -8,7 +8,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Rubik", sans-serif;
-  background-color: lightblue;
 }
 
 .wrapper {
@@ -23,6 +22,7 @@ body {
   align-items: center;
   margin: 0 auto;
   position: relative;
+  z-index: 999;
 }
 
 .title {
@@ -105,6 +105,15 @@ body {
   font-weight: 500;
   text-align: start;
   line-height: 30px;
+}
+
+.map {
+  min-height: calc(100vh - 273px);
+  background-color: bisque;
+}
+
+.leaflet-container {
+  height: calc(100vh - 273px);
 }
 
 @media (max-width: 1200px) {

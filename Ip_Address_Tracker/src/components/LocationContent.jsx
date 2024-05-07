@@ -1,5 +1,8 @@
-export default function LocationContent({ ipData }) {
-  const { ipAddress, city, country, postalCode, timezone, isp } = ipData;
+import useData from "../../hooks/useData";
+
+export default function LocationContent() {
+  const [data] = useData();
+  const { ipAddress, city, country, postalCode, timezone, isp } = data;
 
   return (
     <div className="location-container">
