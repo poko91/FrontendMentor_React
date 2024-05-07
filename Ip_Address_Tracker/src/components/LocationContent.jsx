@@ -9,11 +9,7 @@ export default function LocationContent({ location }) {
       </div>
       <div className="loc-item">
         <p className="loc-title">LOCATION</p>
-        <p className="loc-content">
-          {location.city}, {location.country}
-          <br />
-          {location.postalCode}
-        </p>
+        <p className="loc-content">{`${location.city}, ${location.country} ${location.postalCode}`}</p>
       </div>
       <div className="loc-item">
         <p className="loc-title">TIMEZONE</p>

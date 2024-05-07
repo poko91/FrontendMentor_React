@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     mark: 17099008,
     isp: "TOT Public Company Limited",
@@ -1201,3 +1201,5 @@ export const data = [
     geonameId: 1734393,
   },
 ];
+
+export default data;
