@@ -57,11 +57,9 @@ body {
   font-size: 24px;
   cursor: pointer;
   display: flex;
-  align-items: center;
 }
 
 .location-container {
-  width: 100%;
   max-width: 1200px;
   background-color: white;
   border-radius: 15px;
@@ -111,7 +109,7 @@ body {
 
 @media (max-width: 1200px) {
   .location-container {
-    width: 80%;
+    width: 70%;
     padding-bottom: 60px;
   }
 
@@ -124,14 +122,14 @@ body {
   }
 }
 
-@media (max-width: 785px) {
+@media (max-width: 810px) {
   .wrapper {
     background-image: url("./assets/pattern-bg-mobile.png");
     padding-bottom: 200px;
   }
 
   .location-container {
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -156,7 +154,13 @@ body {
   }
 
   .search-bar {
-    min-width: 345px;
+    min-width: 300px;
     padding: 15px;
+    font-size: 14px;
+  }
+
+  .search-bar-container button {
+    padding: 15px;
+    font-size: 18px;
   }
 }

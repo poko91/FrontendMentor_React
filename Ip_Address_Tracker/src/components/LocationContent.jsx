@@ -1,23 +1,23 @@
-import React from "react";
+export default function LocationContent({ ipData }) {
+  const { ipAddress, city, country, postalCode, timezone, isp } = ipData;
 
-export default function LocationContent({ ipdata }) {
   return (
     <div className="location-container">
       <div className="loc-item">
         <p className="loc-title">IP ADDRESS</p>
-        <p className="loc-content">{ipData.ip}</p>
+        <p className="loc-content">{ipAddress}</p>
       </div>
       <div className="loc-item">
         <p className="loc-title">LOCATION</p>
-        <p className="loc-content">{`${ipData.location.city}, ${ipData.location.country} ${ipData.location.postalCode}`}</p>
+        <p className="loc-content">{`${city}, ${country} ${postalCode}`}</p>
       </div>
       <div className="loc-item">
         <p className="loc-title">TIMEZONE</p>
-        <p className="loc-content">{ipData.timezone}</p>
+        <p className="loc-content">{timezone}</p>
       </div>
       <div className="loc-item">
         <p className="loc-title">ISP</p>
-        <p className="loc-content">{ipData.isp}</p>
+        <p className="loc-content">{isp}</p>
       </div>
     </div>
   );
