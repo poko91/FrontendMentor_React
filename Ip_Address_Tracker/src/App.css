@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+.wrapper {
+  min-width: 100vw;
+  background-image: url("./assets/pattern-bg-desktop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  padding-bottom: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 999;
+}
+
+.title {
+  color: white;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.search-bar {
+  display: inline;
+  min-width: 500px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 18px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.search-bar-container button {
+  padding: 13px 22px;
+  border: none;
+  background-color: hsl(0, 0%, 17%);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+}
+
+.location-container {
+  max-width: 1200px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  padding-bottom: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: absolute;
+  top: 180px;
+}
+
+.loc-item {
+  border-right: 1px solid hsl(0, 1%, 83%);
+  padding-right: 50px;
+  padding-left: 20px;
+  height: 80px;
+  position: relative;
+  top: 12px;
+}
+
+.loc-item:first-child {
+  padding-left: 0px;
+}
+
+.loc-item:last-child {
+  border-right: none;
+  padding-right: 0px;
+}
+
+.loc-title {
+  font-size: 12px;
+  color: hsl(0, 0%, 58%);
+  font-weight: 500;
+  text-align: start;
+  position: absolute;
+  top: -20px;
+  font-family: inherit;
+  letter-spacing: 3px;
+}
+
+.loc-content {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: start;
+  line-height: 30px;
+}
+
+.map {
+  min-height: calc(100vh - 273px);
+  background-color: bisque;
+}
+
+.leaflet-container {
+  height: calc(100vh - 273px);
+}
+
+@media (max-width: 1200px) {
+  .location-container {
+    width: 70%;
+    padding-bottom: 60px;
+  }
+
+  .loc-item {
+    padding-right: 20px;
+  }
+
+  .loc-content {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 810px) {
+  .wrapper {
+    background-image: url("./assets/pattern-bg-mobile.png");
+    padding-bottom: 200px;
+  }
+
+  .location-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .loc-item {
+    border: none;
+    padding: 0;
+  }
+
+  .loc-title {
+    font-size: 10px;
+    text-align: center;
+    position: static;
+    margin-bottom: 6px;
+  }
+
+  .loc-content {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .search-bar {
+    min-width: 300px;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .search-bar-container button {
+    padding: 15px;
+    font-size: 18px;
+  }
+}
