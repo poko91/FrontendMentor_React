@@ -1,18 +1,19 @@
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import useData from "../../hooks/useData";
+import { useMap } from "react-leaflet";
+import { useEffect } from "react";
 import icon from "../assets/icon-location.svg";
 
 export default function Map() {
   const [data] = useData();
-  const [position, setPosition] = useData();
 
   if (!data) {
     return <p></p>;
   }
 
   return (
-    <MapContainer center={[data.lat, data.lng]} zoom={13}>
+    <MapContainer center={[51.5, -0.09]} zoom={13}>
       <TileLayer
         attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -22,7 +23,19 @@ export default function Map() {
         icon={L.icon({
           iconUrl: icon,
         })}
-      ></Marker>
+      >
+        {/* <Popup>This is the location</Popup> */}
+        <Popup>{data.ipAddress}</Popup>
+      </Marker>
+      <RecenterAutomatically coordinates={[data.lat, data.lng]} />
     </MapContainer>
   );
 }
+
+const RecenterAutomatically = ({ coordinates }) => {
+  const map = useMap();
+  useEffect(() => {
+    map.flyTo(coordinates);
+  }, [coordinates, map]);
+  return null;
+};
