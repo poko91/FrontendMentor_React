@@ -111,12 +111,12 @@ export default function CountryDetails() {
                 <span className="languages"></span>
               </p>
             </div>
-            {countryData.borders && countryData.borders.length && (
+            {countryData.borders.length !== 0 && (
               <div className="border-countries">
-                <b>Border Countries:</b>&nbsp;
-                {countryData.borders.map((country) => (
-                  <Link key={country} to={`/${country}`}>
-                    {country}
+                <b>Border Countries: </b>&nbsp;
+                {countryData.borders.map((border) => (
+                  <Link key={border} to={`/${border}`}>
+                    {border}
                   </Link>
                 ))}
               </div>
