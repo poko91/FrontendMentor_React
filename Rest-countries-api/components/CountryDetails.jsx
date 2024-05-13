@@ -79,36 +79,36 @@ export default function CountryDetails() {
             <h1>{countryData.name}</h1>
             <div className="details-text">
               <p>
-                <b>Native Name: {countryData.nativeName || countryData.name} </b>
-                <span className="native-name"></span>
+                <b>Native Name: </b>
+                {countryData.nativeName || countryData.name}
               </p>
               <p>
-                <b>Population: {countryData.population}</b>
-                <span className="population"></span>
+                <b>Population: </b>
+                {countryData.population}
               </p>
               <p>
-                <b>Region: {countryData.region}</b>
-                <span className="region"></span>
+                <b>Region: </b>
+                {countryData.region}
               </p>
               <p>
-                <b>Sub Region: {countryData.subRegion}</b>
-                <span className="sub-region"></span>
+                <b>Sub Region: </b>
+                {countryData.subRegion}
               </p>
               <p>
-                <b>Capital: {countryData.capital?.join(", ")}</b>
-                <span className="capital"></span>
+                <b>Capital: </b>
+                {countryData.capital?.join(", ")}
               </p>
               <p>
-                <b>Top Level Domain: {countryData.topLevelDomain}</b>
-                <span className="top-level-domain"></span>
+                <b>Top Level Domain: </b>
+                {countryData.topLevelDomain}
               </p>
               <p>
-                <b>Currencies: {countryData.currencies}</b>
-                <span className="currencies"></span>
+                <b>Currencies: </b>
+                {countryData.currencies}
               </p>
               <p>
-                <b>Languages: {countryData.languages}</b>
-                <span className="languages"></span>
+                <b>Languages: </b>
+                {countryData.languages}
               </p>
             </div>
             {countryData.borders.length !== 0 && (

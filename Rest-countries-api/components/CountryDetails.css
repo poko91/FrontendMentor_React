@@ -20,7 +20,7 @@
 }
 
 .country-details img {
-  max-width: 50%;
+  max-width: 40%;
   border: 1px solid #ddd;
 }
 
@@ -31,10 +31,15 @@
   column-gap: 46px;
   max-height: 180px;
   flex-wrap: wrap;
+  padding-right: 10px;
 }
 
 .details-text p {
   margin: 0;
+}
+
+.details-text {
+  max-width: 300px;
 }
 
 .border-countries {
@@ -58,12 +63,20 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1270px) {
   .country-details img {
     max-width: 45%;
   }
   .country-details {
-    gap: 64px;
+    gap: 42px;
+  }
+
+  .details-text {
+    column-gap: 30px;
+  }
+  .details-text p {
+    font-size: 15px;
+    max-width: 220px;
   }
 }
 
@@ -77,6 +90,10 @@
 
   .details-text {
     max-height: unset;
+  }
+
+  .details-text p {
+    font-size: unset;
   }
 
   .country-details img {
